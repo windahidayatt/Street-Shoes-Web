@@ -46,35 +46,16 @@
                     <p class="card-text"><?php echo "Stok   : " . $stok; ?></p>
                     <p class="card-text"><?php echo "Berat  : " . $berat; ?></p>
                     <p class="card-text-2"><?php echo "Rp. " . $harga; ?></p>
-                    <form class="form-inline">
+                    <form class="form-inline" action="template.php?content=<?php echo 'cart.php&id='. $id?>" method="post">
                         <div class="form-group mx-sm-3 mb-2" style="margin-left: 0 !important;">
                             <input type='text' name='qty' size='3' value='1' style='text-align:right' class="form-control">
                         </div>
                         <button type="submit" class="btn btn-light mb-2">Add to cart</button>
                     </form>
                     <a class="btn btn-secondary" href="template.php?content=<?php echo 'home.php'?>" role="button" style="float: right;">Back</a>
-                    <!-- <p>
-                        <a class="btn btn-light" href="#" role="button">Add to cart</a>
-                        
-                    </p> -->
                 </div>
             </div>
         </div>
-        
-        <!-- <div class="col-sm-3 mb-3">
-          <div class="card">
-            <img src="img/<?php echo $gambar; ?>" class="card-img-top" alt="gambar">
-            <div class="card-body">
-              <h5 class="card-title"><?php echo $nama; ?></h5>
-              <p class="card-text"><?php echo $harga; ?></p>
-            </div>
-            <div class="card-footer">
-                <a class="btn btn-secondary" href="template.php?content=<?php echo 'product_detail.php'?>">Detail</a>
-                <a class="btn btn-dark" href="#" role="button" style="float: right;">Add to cart</a>
-            </div>
-          </div>
-        </div> -->
- 
     </div>
 </div>
 </body>

@@ -2,9 +2,14 @@
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <style>
+    body{
+        overflow-y: scroll;
+    }
+    body::-webkit-scrollbar {
+        display: none;
+    }
     table, th, td , tr{
-    border: 1px solid #D4A594;
-    border-collapse: collapse;
+        border-collapse: collapse;
     }
     th,td,tr{
         padding : 15px;
@@ -16,7 +21,7 @@
         background-color: #343a40;
     }
     table#t01 th {
-    background-color: #D4A594;
+    background-color: #F6B5AC;
     color: black;
     }
     .pad-menu{
@@ -66,11 +71,11 @@
                 height="50" align = "center">
                 <td>
                 <a href="template.php?content=<?php echo 'home.php'?>" class="pad-menu">Home</a>
-                <a href="template.php?content=<?php echo 'berita.php'?>" class="pad-menu">Keranjang</a>
+                <a href="template.php?content=<?php echo 'show_cart.php'?>" class="pad-menu">Cart</a>
                 </td>
             </tr>
             <tr
-                height="200">
+                height="390">
                 <td><h1><?php include $vcontent; ?></h1></td>
             </tr>
             <tr

@@ -31,7 +31,7 @@
             </div>
             <div class="card-footer">
                 <a class="btn btn-secondary" href="template.php?content=<?php echo 'product_detail.php&id='. $id?>">Detail</a>
-                <a class="btn btn-dark" href="#" role="button" style="float: right;">Add to cart</a>
+                <a class="btn btn-dark" href="template.php?content=<?php echo 'cart.php&id='. $id?>" role="button" style="float: right;">Add to cart</a>
             </div>
           </div>
         </div>
