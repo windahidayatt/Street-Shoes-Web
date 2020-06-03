@@ -60,7 +60,7 @@
                             $gambar=$result['gambar'];
                             $id=$result['id'];
                             echo "<tr>";
-                            echo "<td style='width:10%'>". "<img src='img/$gambar' class='img-barang' alt='gambar'>" . "</td>";
+                            echo "<td style='width:10%'>". "<img src='../assets/img/$gambar' class='img-barang' alt='gambar'>" . "</td>";
                             echo "<td class='td-color'>". $result['nama'] . "</td>";
                             echo "<td class='td-color'>" . "Rp. " . $result['harga'] . "</td>";
                             echo "<td class='td-color' style='width:13%'>". $result['berat'] . " kg". "</td>";
@@ -70,7 +70,7 @@
                             $tempTotalPrice = $tempTotalPrice + $result['harga']*$result['jumlah'];
                             $tempTotalWeight = $tempTotalWeight + $result['berat']*$result['jumlah'];
                             ?>
-                            <form action = 'delete_cart_item.php?id=<?php echo $id ?>' method="post">
+                            <form action = '../action_main/delete_cart_item.php?id=<?php echo $id ?>' method="post">
                                 <td class="td-delete td-color">
                                     <button class="btn btn-secondary" name='Delete' style='margin:auto; display:block;'>Delete</button>
                                 </td>
@@ -92,7 +92,7 @@
                         <tr>
                             <td colspan="6"></td>
                             <td colspan="2" style="padding-right: 0 !important; padding-left: 0 !important;">
-                                <a class="btn btn-secondary btn-lg btn-block" href="template.php?content=<?php echo 'form_checkout.php'?>" role="button">Checkout</a>
+                                <a class="btn btn-secondary btn-lg btn-block" href="../layout_main/layout_main.php?content=<?php echo '../pages_main/form_checkout.php'?>" role="button">Checkout</a>
                             </td>
                         </tr>
                     </tfoot>

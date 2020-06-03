@@ -23,7 +23,7 @@
 <div class="container">
     <div class="row" id="load_data">
         <?php
-            include 'connect_db_barang.php';
+            include '../assets/conn_db/connect_db_sshoes.php';
             $id = $_GET['id'];
             $result = mysqli_query($conn, "SELECT * from barang WHERE id_barang=$id");
             $row = mysqli_fetch_assoc($result);
@@ -42,7 +42,7 @@
         <div class="container">
             <div class="row mt-4">
                 <div class="col-4">
-                    <img src="img/<?php echo $gambar; ?>" class="card-img-top" alt="gambar" style="border-radius: 8px;">
+                    <img src="../assets/img/<?php echo $gambar; ?>" class="card-img-top" alt="gambar" style="border-radius: 8px;">
                 </div>
                 <div class="col-8">
                     <h5 class="card-title"><?php echo $nama; ?></h5>
@@ -50,13 +50,13 @@
                     <p class="card-text"><?php echo "Stok   : " . $stok; ?></p>
                     <p class="card-text"><?php echo "Berat  : " . $berat; ?></p>
                     <p class="card-text-2"><?php echo "Rp. " . $harga; ?></p>
-                    <form class="form-inline" action="template.php?content=<?php echo 'cart.php&id='. $id?>" method="post">
+                    <form class="form-inline" action="../layout_main/layout_main.php?content=<?php echo '../action_main/add_to_cart.php&id='. $id?>" method="post">
                         <div class="form-group mx-sm-3 mb-2" style="margin-left: 0 !important;">
                             <input type='text' name='qty' size='3' value='1' style='text-align:right' class="form-control">
                         </div>
                         <button type="submit" class="btn btn-light mb-2">Add to cart</button>
                     </form>
-                    <a class="btn btn-secondary" href="template.php?content=<?php echo 'home.php'?>" role="button" style="float: right;">Back</a>
+                    <a class="btn btn-secondary" href="../layout_main/layout_main.php?content=<?php echo 'home.php'?>" role="button" style="float: right;">Back</a>
                 </div>
             </div>
         </div>

@@ -22,7 +22,7 @@
     <div class="container">
         <div class="row justify-content-center mb-4 mt-3">
             <div class="col-lg-6 form-custom">
-                <form action="login_admin_check.php" method="post" style="margin-block-end: 0">
+                <form action="../action_admin/select_login_admin.php" method="post" style="margin-block-end: 0">
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label">Username</label>
                         <div class="col-sm-8">

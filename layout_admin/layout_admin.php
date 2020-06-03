@@ -51,11 +51,11 @@
         <?php
             session_start();
             if($_SESSION['status_admin'] != "login"){
-                header("location:login_admin.php");
+                header("location:../pages_admin/login_admin.php");
             }
             if(!isset($_GET['content']))
             {
-                $vcontent='sales_list.php';
+                $vcontent='../pages_admin/sales_list.php';
             }
             else
             {
@@ -68,7 +68,7 @@
                 height="100">
                 <td>
                 <!-- <img src="logo_polban.png" alt="Logo Polban" height="100"> -->
-                <img src="img/logo_sepatu2.png" alt="Street Shoes Logo" height="100" style="padding-left:33%">
+                <img src="../assets/img/logo_sepatu2.png" alt="Street Shoes Logo" height="100" style="padding-left:33%">
                 </td>
             </tr>
             <tr
@@ -77,9 +77,9 @@
                     <?php
                         if($_SESSION['status_admin'] == "login"){
                             ?>
-                                <a href="page_admin.php?content=<?php echo 'sales_list.php'?>" role="button">Sales List</a>
-                                <a href="page_admin.php?content=<?php echo 'modify_product.php'?>">Modify Product</a>
-                                <a href="logout_admin.php">Logout</a>
+                                <a href="layout_admin.php?content=<?php echo '../pages_admin/sales_list.php'?>" role="button">Sales List</a>
+                                <a href="layout_admin.php?content=<?php echo '../pages_admin/modify_product.php'?>">Modify Product</a>
+                                <a href="../action_admin/logout_admin.php">Logout</a>
                             <?php
                         }
                     ?>

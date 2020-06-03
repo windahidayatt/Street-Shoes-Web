@@ -1,6 +1,6 @@
 <?php
 
-    include 'connect_db_barang.php';
+    include '../assets/conn_db/connect_db_sshoes.php';
     $id = $_GET['id'];
 
     $result = mysqli_query($conn, "SELECT * from penjualan WHERE id_penjualan=$id");
@@ -16,5 +16,5 @@
     $sql = "UPDATE penjualan SET status_penjualan = '$tempStatus' WHERE id_penjualan = '$id'";
     $conn->query($sql);
 
-    header("location:page_admin.php?content=sales_list.php");
+    header("location:../layout_admin/layout_admin.php?content=../pages_admin/sales_list.php");
 ?>

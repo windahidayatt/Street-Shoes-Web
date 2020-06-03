@@ -51,7 +51,7 @@
         <?php
         if(!isset($_GET['content']))
         {
-            $vcontent='home.php';
+            $vcontent='../pages_main/home.php';
         }
         else
         {
@@ -64,14 +64,14 @@
                 height="100">
                 <td>
                 <!-- <img src="logo_polban.png" alt="Logo Polban" height="100"> -->
-                <img src="img/logo_sepatu2.png" alt="Street Shoes Logo" height="100" style="padding-left:33%">
+                <img src="../assets/img/logo_sepatu2.png" alt="Street Shoes Logo" height="100" style="padding-left:33%">
                 </td>
             </tr>
             <tr
                 height="50" align = "center">
                 <td class="navigation">
-                    <a href="template.php?content=<?php echo 'home.php'?>" class="active" role="button">Home</a>
-                    <a href="template.php?content=<?php echo 'show_cart.php'?>">Cart</a>
+                    <a href="layout_main.php?content=<?php echo '../pages_main/home.php'?>" class="active" role="button">Home</a>
+                    <a href="layout_main.php?content=<?php echo '../pages_main/cart.php'?>">Cart</a>
                 </td>
             </tr>
             <tr

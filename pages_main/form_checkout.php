@@ -17,7 +17,7 @@
     <div class="container">
         <div class="row justify-content-center mb-4 mt-3">
             <div class="col-lg-6 form-custom">
-                <form action="template.php?content=show_checkout.php" method="post" style="margin-block-end: 0">
+                <form action="../layout_main/layout_main.php?content=../pages_main/checkout.php" method="post" style="margin-block-end: 0">
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label">Name</label>
                         <div class="col-sm-8">

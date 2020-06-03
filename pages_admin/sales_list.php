@@ -23,6 +23,11 @@
             padding-top : 5px !important;
             width:10%;
         }
+        .td-detail{
+            padding-top : 5px !important;
+            padding-left : 25px !important;
+            width:10%;
+        }
         .tfooter-custom{
             background-color : #F6B5AC !important;
             color : #343a40 !important;
@@ -32,7 +37,7 @@
 </head>
 <body>
     <?php
-        include 'connect_db_barang.php';
+        include '../assets/conn_db/connect_db_sshoes.php';
 
         $data = mysqli_query($conn, "SELECT * FROM penjualan");
     
@@ -48,9 +53,11 @@
                         <th scope="col" class="th-color">Customer Name</th>
                         <th scope="col" class="th-color">Customer Address</th>
                         <th scope="col" class="th-color">Customer Phone</th>
-                        <th scope="col" class="th-color">Customer Postal Code</th>
+                        <!-- <th scope="col" class="th-color">Customer Postal Code</th> -->
                         <th scope="col" class="th-color">Order Status</th>
                         <th scope="col" class="th-color">Order Action</th>
+                        <th scope="col" class="th-color">Order Detail</th>
+
 
                     </tr>
                 </thead>
@@ -66,7 +73,7 @@
                             echo "<td>" . $row['nama_pembeli'] . "</td>";
                             echo "<td>" . $row['alamat_pembeli'] . "</td>";
                             echo "<td>" . $row['no_hp_pembeli'] . "</td>";
-                            echo "<td>" . $row['kodepos_pembeli'] . "</td>";
+                            // echo "<td>" . $row['kodepos_pembeli'] . "</td>";
                             switch($row ['status_penjualan']){
                                 case 0 : $tempStatus = "Not Yet Paid"; break;
                                 case 1 : $tempStatus = "Already Paid"; break;
@@ -74,11 +81,14 @@
                             }
                             echo "<td>" . $tempStatus . "</td>";
                             ?>
-                                <form action = 'update_order_status.php?id=<?php echo $id ?>' method="post">
+                                <form action = '../action_admin/update_order_status.php?id=<?php echo $id ?>' method="post">
                                     <td class="td-update td-color">
                                         <button class="btn btn-secondary" name='Update' style='margin:auto; display:block;'>Update</button>
                                     </td>
                                 </form>
+                                <td class="td-detail">
+                                    <a class="btn btn-secondary" href="../layout_admin/layout_admin.php?content=<?php echo '../pages_admin/order_detail.php&id='. $id?>">Detail</a>
+                                </td>
                             <?php
                             echo "</tr>";
                         }

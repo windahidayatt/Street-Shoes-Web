@@ -8,7 +8,7 @@
     <?php
         session_start();
         // session_destroy();
-        include 'connect_db_barang.php';
+        include '../assets/conn_db/connect_db_sshoes.php';
         $id = $_GET['id'];
         if(isset($_POST['qty'])) 
         { 
@@ -56,7 +56,7 @@
             $_SESSION['cart'][] = $cart;
             mysqli_close($conn);
         }
-        include 'show_cart.php';
+        include '../pages_main/cart.php';
     ?>
     
 </body>

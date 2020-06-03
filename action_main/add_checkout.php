@@ -10,7 +10,7 @@
         $phone = $_SESSION['customer']['phone'];
         $postal = $_SESSION['customer']['postal'];
                 
-        include 'connect_db_barang.php';
+        include '../assets/conn_db/connect_db_sshoes.php';
 
         $sql = "INSERT INTO penjualan(nama_pembeli, alamat_pembeli, no_hp_pembeli, kodepos_pembeli) VALUES ('$name', '$address', '$phone', '$postal')";
         $conn->query($sql);
@@ -32,6 +32,7 @@
             $conn->query($sql);
 
         }
+        unset($_SESSION['cart']);
         echo "Checkout succes!" . "<br>";
 
         $conn->close();

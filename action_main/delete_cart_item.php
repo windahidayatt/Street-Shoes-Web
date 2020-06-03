@@ -8,5 +8,5 @@
             unset($_SESSION['cart'][$key]);
         }
     }
-    header("location:template.php?content=show_cart.php");
+    header("location:../layout_main/layout_main.php?content=../pages_main/cart.php");
 ?>

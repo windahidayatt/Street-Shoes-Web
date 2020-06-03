@@ -96,7 +96,7 @@
                 $gambar=$result['gambar'];
                 $id=$result['id'];
                 echo "<tr>";
-                echo "<td style='width:10%'>". "<img src='img/$gambar' class='img-barang' alt='gambar'>" . "</td>";
+                echo "<td style='width:10%'>". "<img src='../assets/img/$gambar' class='img-barang' alt='gambar'>" . "</td>";
                 echo "<td class='td-color'>". $result['nama'] . "</td>";
                 echo "<td class='td-color'>" . "Rp. " . $result['harga'] . "</td>";
                 echo "<td class='td-color' style='width:13%'>". $result['berat'] . " kg". "</td>";
@@ -108,7 +108,7 @@
                 // echo "<td class='td-delete td-color'>" . "<a class='btn btn-secondary' href='delete_cart_item.php?id=$id' role='button'>Delete</a>";
                 echo "</tr>";
             }
-            include 'check_shipping_charges.php'
+            include '../action_main/select_shipping_charges.php'
             ?>
         </tbody>
         <tfoot>
@@ -130,7 +130,7 @@
             <tr>
                 <td colspan="5"></td>
                 <td colspan="2" style="padding-right: 0 !important; padding-left: 0 !important;">
-                    <a class="btn btn-secondary btn-lg btn-block" href="template.php?content=<?php echo 'save_checkout.php'?>" role="button">Create Order</a>
+                    <a class="btn btn-secondary btn-lg btn-block" href="../layout_main/layout_main.php?content=<?php echo '../action_main/add_checkout.php'?>" role="button">Create Order</a>
                 </td>
             </tr>
         </tfoot>

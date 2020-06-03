@@ -13,7 +13,7 @@
 <div class="container">
     <div class="row" id="load_data">
       <?php
-        include 'connect_db_barang.php';
+        include '../assets/conn_db/connect_db_sshoes.php';
         $result = mysqli_query($conn, "SELECT * from barang");
     
         while($row = mysqli_fetch_assoc($result)){
@@ -24,14 +24,14 @@
           ?>
         <div class="col-sm-3 mb-3">
           <div class="card">
-            <img src="img/<?php echo $gambar; ?>" class="card-img-top" alt="gambar">
+            <img src="../assets/img/<?php echo $gambar; ?>" class="card-img-top" alt="gambar">
             <div class="card-body">
               <h5 class="card-title"><?php echo $nama; ?></h5>
               <p class="card-text"><?php echo "Rp. " . $harga; ?></p>
             </div>
             <div class="card-footer">
-                <a class="btn btn-secondary" href="template.php?content=<?php echo 'product_detail.php&id='. $id?>">Detail</a>
-                <a class="btn btn-dark" href="template.php?content=<?php echo 'cart.php&id='. $id?>" role="button" style="float: right;">Add to cart</a>
+                <a class="btn btn-secondary" href="../layout_main/layout_main.php?content=<?php echo '../pages_main/product_detail.php&id='. $id?>">Detail</a>
+                <a class="btn btn-dark" href="../layout_main/layout_main.php?content=<?php echo '../action_main/add_to_cart.php&id='. $id?>" role="button" style="float: right;">Add to cart</a>
             </div>
           </div>
         </div>

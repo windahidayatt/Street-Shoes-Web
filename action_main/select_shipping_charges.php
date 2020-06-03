@@ -3,7 +3,7 @@
     <?php
         $kodepos_pembeli = $_SESSION['customer']['postal'];
                 
-        include 'connect_db_barang.php';
+        include '../assets/conn_db/connect_db_sshoes.php';
 
         $result = mysqli_query($conn, "SELECT * from ongkir WHERE kodepos_tujuan=$kodepos_pembeli");
         $row = mysqli_fetch_assoc($result);

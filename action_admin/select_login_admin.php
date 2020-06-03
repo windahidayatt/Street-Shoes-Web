@@ -1,7 +1,7 @@
 <?php
     //mengaktifkan session php
     session_start();
-    include 'connect_db_barang.php';
+    include '../assets/conn_db/connect_db_sshoes.php';
     $username = $_POST['username'];
     $password = $_POST['password'];
 
@@ -11,8 +11,8 @@
     if($cek > 0){
         $_SESSION['username_admin'] = $username;
         $_SESSION['status_admin'] = "login";
-        header("location:page_admin.php");
+        header("location:../layout_admin/layout_admin.php");
     }else{
-        header("location:login_admin.php");
+        header("location:../pages_admin/login_admin.php");
     }
 ?>
