@@ -1,4 +1,16 @@
 <html>
+<head>
+<style>
+    .title-custom{
+        color : #F6B5AC;
+        text-align:center;
+    }
+    .btn-custom{
+        text-align:center;
+        margin-left:535px;
+    }
+</style>
+</head>
 <body>
     <?php
         if(!isset($_SESSION)) 
@@ -33,9 +45,13 @@
 
         }
         unset($_SESSION['cart']);
-        echo "Checkout succes!" . "<br>";
 
         $conn->close();
     ?>
+    
+    <h3 class="title-custom">Checkout Succes!</h3>
+    
+    <a class="btn btn-secondary btn-lg btn-custom" href="../layout_main/layout_main.php?content=<?php echo '../pages_main/invoice.php'?>" role="button">Show Invoice</a>
+
 </body>
 </html>

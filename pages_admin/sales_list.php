@@ -87,7 +87,7 @@
                                     </td>
                                 </form>
                                 <td class="td-detail">
-                                    <a class="btn btn-secondary" href="../layout_admin/layout_admin.php?content=<?php echo '../pages_admin/order_detail.php&id='. $id?>">Detail</a>
+                                    <a class="btn btn-secondary" href="../layout_admin/layout_admin.php?content=<?php echo '../pages_main/invoice.php&id='. $id?>">Detail</a>
                                 </td>
                             <?php
                             echo "</tr>";

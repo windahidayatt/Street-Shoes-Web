@@ -15,7 +15,6 @@
         mysqli_close($conn);
 
         $tempTotalWeight = $_SESSION['totalweight']; // e.g. total weight = 5.7
-        $n = 1.25;
         $whole = floor($tempTotalWeight);      // whole = 5
         $fraction = $tempTotalWeight - $whole; // fraction = .7
 
