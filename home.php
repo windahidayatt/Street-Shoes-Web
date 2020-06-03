@@ -35,7 +35,9 @@
             </div>
           </div>
         </div>
-      <?php } ?>
+      <?php 
+      }
+      mysqli_close($conn); ?>
  
     </div>
 </div>

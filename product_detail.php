@@ -33,6 +33,10 @@
             $stok = $row["stok_barang"];
             $berat = $row["berat_barang"];
             $deskripsi = $row["deskripsi_barang"];
+            mysqli_close($conn);
+
+            // for information of stock
+            $_SESSION['stok'] = $stok;
         ?>
 
         <div class="container">

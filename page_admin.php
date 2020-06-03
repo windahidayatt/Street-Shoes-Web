@@ -49,14 +49,18 @@
 </head>
     <body style="margin:0">
         <?php
-        if(!isset($_GET['content']))
-        {
-            $vcontent='home.php';
-        }
-        else
-        {
-            $vcontent=$_GET['content'];
-        }
+            session_start();
+            if($_SESSION['status_admin'] != "login"){
+                header("location:login_admin.php");
+            }
+            if(!isset($_GET['content']))
+            {
+                $vcontent='sales_list.php';
+            }
+            else
+            {
+                $vcontent=$_GET['content'];
+            }
         ?>
         
         <table width=100% id="t01" align = "center">
@@ -70,8 +74,15 @@
             <tr
                 height="50" align = "center">
                 <td class="navigation">
-                    <a href="template.php?content=<?php echo 'home.php'?>" class="active" role="button">Home</a>
-                    <a href="template.php?content=<?php echo 'show_cart.php'?>">Cart</a>
+                    <?php
+                        if($_SESSION['status_admin'] == "login"){
+                            ?>
+                                <a href="page_admin.php?content=<?php echo 'sales_list.php'?>" role="button">Sales List</a>
+                                <a href="page_admin.php?content=<?php echo 'modify_product.php'?>">Modify Product</a>
+                                <a href="logout_admin.php">Logout</a>
+                            <?php
+                        }
+                    ?>
                 </td>
             </tr>
             <tr

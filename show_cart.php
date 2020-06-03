@@ -7,10 +7,6 @@
         table#t02 tr:nth-child(odd) {
             background-color: #343a40;
         }
-        table#t02 th {
-            background-color: #F6B5AC;
-            color: black;
-        }
         .img-barang{
             height : 120px;
             width : 120px;
@@ -18,7 +14,6 @@
         }
         .th-color{
             color : #343a40 !important;
-            text-align:center;
         }
         .td-color{
             color : #F6B5AC !important;
@@ -28,6 +23,11 @@
             padding-top:50px !important;
             width:7%;
         }
+        .tfooter-custom{
+            background-color : #F6B5AC !important;
+            color : #343a40 !important;
+            font-weight : bold;
+        }
     </style>
 </head>
 <body>
@@ -36,30 +36,39 @@
         { 
             session_start(); 
         }
-        if(count($_SESSION['cart']) > 0){
-            ?>
-            <table class="table table-dark" id="t02">
+        if(isset($_SESSION['cart'])){
+            if(count($_SESSION['cart']) > 0){
+                ?>
+                <table class="table table-dark mt-3 mb-3" id="t02">
                     <thead>
                         <tr>
                             <th scope="col" class="th-color">Product Picture</th>
                             <th scope="col" class="th-color">Name</th>
-                            <th scope="col" class="th-color">Price</th>
+                            <th scope="col" class="th-color">Price per item</th>
+                            <th scope="col" class="th-color">Weight per item</th>
                             <th scope="col" class="th-color">Quantity</th>
                             <th scope="col" class="th-color">Subtotal</th>
+                            <th scope="col" class="th-color">Subweight</th>
                             <th scope="col" class="th-color">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
+                        $tempTotalPrice = 0;
+                        $tempTotalWeight = 0;
                         foreach($_SESSION['cart'] as $result) {
                             $gambar=$result['gambar'];
                             $id=$result['id'];
                             echo "<tr>";
                             echo "<td style='width:10%'>". "<img src='img/$gambar' class='img-barang' alt='gambar'>" . "</td>";
                             echo "<td class='td-color'>". $result['nama'] . "</td>";
-                            echo "<td class='td-color' style='width:19%'>". $result['harga'] . "</td>";
-                            echo "<td class='td-color' style='width:13%; text-align:center;'>". $result['jumlah'] . "</td>";
-                            echo "<td class='td-color'>". $result['harga']*$result['jumlah'] . "</td>";
+                            echo "<td class='td-color'>" . "Rp. " . $result['harga'] . "</td>";
+                            echo "<td class='td-color' style='width:13%'>". $result['berat'] . " kg". "</td>";
+                            echo "<td class='td-color' style='width:10%'>". $result['jumlah'] . "</td>";
+                            echo "<td class='td-color'>". "Rp. " . $result['harga']*$result['jumlah'] . "</td>";
+                            echo "<td class='td-color'>". $result['berat']*$result['jumlah'] . " kg". "</td>";
+                            $tempTotalPrice = $tempTotalPrice + $result['harga']*$result['jumlah'];
+                            $tempTotalWeight = $tempTotalWeight + $result['berat']*$result['jumlah'];
                             ?>
                             <form action = 'delete_cart_item.php?id=<?php echo $id ?>' method="post">
                                 <td class="td-delete td-color">
@@ -70,15 +79,36 @@
                             // echo "<td class='td-delete td-color'>" . "<a class='btn btn-secondary' href='delete_cart_item.php?id=$id' role='button'>Delete</a>";
                             echo "</tr>";
                         }
+                        // for checking shipping charges so it could be a session bcs it doesn't checked here
+                        $_SESSION['totalweight'] = $tempTotalWeight;
                         ?>
                     </tbody>
-            </table>
-            <?php
+                    <tfoot>
+                        <tr>
+                            <td colspan="5" class="tfooter-custom" style="text-align :right;">Total   : </td>
+                            <td class="tfooter-custom">Rp. <?php echo $tempTotalPrice ?></td>
+                            <td colspan="2" class="tfooter-custom"><?php echo $tempTotalWeight ?> kg</td>
+                        </tr>
+                        <tr>
+                            <td colspan="6"></td>
+                            <td colspan="2" style="padding-right: 0 !important; padding-left: 0 !important;">
+                                <a class="btn btn-secondary btn-lg btn-block" href="template.php?content=<?php echo 'form_checkout.php'?>" role="button">Checkout</a>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <?php
+            }else{
+                ?>
+                <p style="color : #F6B5AC; text-align:center;">Cart is empty!</p>
+                <?php
+            }
         }else{
             ?>
             <p style="color : #F6B5AC; text-align:center;">Cart is empty!</p>
             <?php
         }
+        
     ?>
     
 </body>
