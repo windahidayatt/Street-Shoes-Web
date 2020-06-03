@@ -42,7 +42,6 @@
         $data = mysqli_query($conn, "SELECT * FROM penjualan");
     
         $cek = mysqli_num_rows($data);
-        if($cek > 0)
         if($cek > 0){
         ?>
             <table class="table table-dark mt-3 mb-3" id="t04">
@@ -53,7 +52,6 @@
                         <th scope="col" class="th-color">Customer Name</th>
                         <th scope="col" class="th-color">Customer Address</th>
                         <th scope="col" class="th-color">Customer Phone</th>
-                        <!-- <th scope="col" class="th-color">Customer Postal Code</th> -->
                         <th scope="col" class="th-color">Order Status</th>
                         <th scope="col" class="th-color">Order Action</th>
                         <th scope="col" class="th-color">Order Detail</th>
@@ -70,10 +68,20 @@
                             echo "<td>" . $row['id_penjualan'] . "</td>";
                             $id = $row['id_penjualan'];
                             echo "<td>" . $row['tanggal_penjualan'] . "</td>";
-                            echo "<td>" . $row['nama_pembeli'] . "</td>";
-                            echo "<td>" . $row['alamat_pembeli'] . "</td>";
-                            echo "<td>" . $row['no_hp_pembeli'] . "</td>";
-                            // echo "<td>" . $row['kodepos_pembeli'] . "</td>";
+                            // Daftar penjualan versi 1 (belum ada tabel pembeli)
+                            // echo "<td>" . $row['nama_pembeli'] . "</td>";
+                            // echo "<td>" . $row['alamat_pembeli'] . "</td>";
+                            // echo "<td>" . $row['no_hp_pembeli'] . "</td>";
+
+                            // Daftar penjualan versi 2 (ada tabel pembeli)
+                            // ngambil info pembeli dari tabel pembelli
+                            $id_pembeli = $row['id_pembeli'];
+                            $result_pembeli = mysqli_query($conn, "SELECT * from pembeli WHERE id_pembeli=$id_pembeli");
+                            $row_pembeli = mysqli_fetch_assoc($result_pembeli);
+                            echo "<td>" . $row_pembeli['nama_pembeli'] . "</td>";
+                            echo "<td>" . $row_pembeli['alamat_pembeli'] . "</td>";
+                            echo "<td>" . $row_pembeli['no_hp_pembeli'] . "</td>";
+                            
                             switch($row ['status_penjualan']){
                                 case 0 : $tempStatus = "Not Yet Paid"; break;
                                 case 1 : $tempStatus = "Already Paid"; break;

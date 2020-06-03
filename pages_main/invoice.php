@@ -61,17 +61,31 @@
             <?php
                 include '../assets/conn_db/connect_db_sshoes.php';
                 $id = $_GET['id'];
-                // $id = 7;
 
-                // db for select customer biodata
-                $result = mysqli_query($conn, "SELECT * from penjualan WHERE id_penjualan=$id");
+                // db for select customer biodata (ver 1)
+                // $result = mysqli_query($conn, "SELECT * from penjualan WHERE id_penjualan=$id");
+                // $row = mysqli_fetch_assoc($result);
+                // $id_penjualan = $row["id_penjualan"];
+                // $nama = $row["nama_pembeli"];
+                // $alamat = $row["alamat_pembeli"];
+                // $phone = $row["no_hp_pembeli"];
+                // $postal_code = $row["kodepos_pembeli"];
+                // $waktu = $row["tanggal_penjualan"];
+
+                // db for select customer biodata (ver 2)
+                $id_pembeli = $_SESSION['id_pembeli'];
+                $result = mysqli_query($conn, "SELECT * from pembeli WHERE id_pembeli=$id_pembeli");
                 $row = mysqli_fetch_assoc($result);
-                $id_penjualan = $row["id_penjualan"];
                 $nama = $row["nama_pembeli"];
                 $alamat = $row["alamat_pembeli"];
                 $phone = $row["no_hp_pembeli"];
                 $postal_code = $row["kodepos_pembeli"];
+                
+                $result = mysqli_query($conn, "SELECT * from penjualan WHERE id_penjualan=$id");
+                $row = mysqli_fetch_assoc($result);
+                $id_penjualan = $row["id_penjualan"];
                 $waktu = $row["tanggal_penjualan"];
+
 
                 // db for check product weight and price
                 $result = mysqli_query($conn, "SELECT * from jual WHERE id_penjualan=$id");

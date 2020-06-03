@@ -18,7 +18,7 @@
     </style>
 </head>
 <body>
-    <h3 class="title-custom mt-3">Login Admin</h3>
+    <h3 class="title-custom mt-3">Login as Admin</h3>
     <div class="container">
         <div class="row justify-content-center mb-4 mt-3">
             <div class="col-lg-6 form-custom">

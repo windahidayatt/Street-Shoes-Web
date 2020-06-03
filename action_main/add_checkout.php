@@ -17,15 +17,22 @@
         { 
             session_start(); 
         }
+        include '../assets/conn_db/connect_db_sshoes.php';
+
+        // insert versi pertama belum ada tabel pembeli
         $name = $_SESSION['customer']['name'];
         $address = $_SESSION['customer']['address'];
         $phone = $_SESSION['customer']['phone'];
         $postal = $_SESSION['customer']['postal'];
-                
-        include '../assets/conn_db/connect_db_sshoes.php';
+        // $sql = "INSERT INTO penjualan(nama_pembeli, alamat_pembeli, no_hp_pembeli, kodepos_pembeli) VALUES ('$name', '$address', '$phone', '$postal')";
+        // $conn->query($sql);
 
-        $sql = "INSERT INTO penjualan(nama_pembeli, alamat_pembeli, no_hp_pembeli, kodepos_pembeli) VALUES ('$name', '$address', '$phone', '$postal')";
+        // insert ver 2 udah ada tabel pembeli
+        $id_pembeli = $_SESSION['id_pembeli'];
+        $sql = "INSERT INTO penjualan (id_pembeli) VALUES ('$id_pembeli')";
         $conn->query($sql);
+
+
         $last_id = $conn->insert_id;
 
         foreach($_SESSION['cart'] as $result) {
@@ -46,12 +53,12 @@
         }
         unset($_SESSION['cart']);
 
-        $conn->close();
+        // $conn->close();
     ?>
     
     <h3 class="title-custom">Checkout Succes!</h3>
     
-    <a class="btn btn-secondary btn-lg btn-custom" href="../layout_main/layout_main.php?content=<?php echo '../pages_main/invoice.php'?>" role="button">Show Invoice</a>
+    <a class="btn btn-secondary btn-lg btn-custom" href="../layout_main/layout_main.php?content=<?php echo '../pages_main/invoice.php&id='.$last_id?>" role="button">Show Invoice</a>
 
 </body>
 </html>

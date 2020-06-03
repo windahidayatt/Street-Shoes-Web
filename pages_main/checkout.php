@@ -45,12 +45,26 @@
         { 
             session_start(); 
         }
-        $customer['name'] = $_POST['name'];
-        $customer['address'] = $_POST['address'];
-        $customer['phone'] = $_POST['phone'];
-        $customer['postal'] = $_POST['postal'];
+        // $customer['name'] = $_POST['name'];
+        // $customer['address'] = $_POST['address'];
+        // $customer['phone'] = $_POST['phone'];
+        // $customer['postal'] = $_POST['postal'];
 
-        $_SESSION['customer'] = $customer;
+        // $_SESSION['customer'] = $customer;
+
+        include '../assets/conn_db/connect_db_sshoes.php';
+        // $username_pembeli = $_SESSION['username_pembeli'];
+        $id_pembeli = $_SESSION['id_pembeli'];
+        // echo $username_pembeli;
+        // $result_pembeli = mysqli_query($conn, "SELECT * from pembeli WHERE username_pembeli=$username_pembeli");
+        $result_pembeli = mysqli_query($conn, "SELECT * from pembeli WHERE id_pembeli=$id_pembeli");
+
+        $row = mysqli_fetch_assoc($result_pembeli);
+        $nama_pembeli = $row["nama_pembeli"];
+        $alamat_pembeli = $row["alamat_pembeli"];
+        $no_hp_pembeli = $row["no_hp_pembeli"];
+        $kodepos_pembeli = $row["kodepos_pembeli"];
+        mysqli_close($conn);
     ?>
     <table class="table table-dark mt-3" id="t03">
         <tr>
@@ -58,19 +72,24 @@
         </tr>
         <tr>
             <th scope="col" class="th-color">Name</th>
-            <td class="td-cust"><?php echo $_SESSION['customer']['name']?></td>
+            <!-- <td class="td-cust"><?php echo $_SESSION['customer']['name']?></td> -->
+            <td class="td-cust"><?php echo $nama_pembeli?></td>
         </tr>
         <tr>
             <th scope="col" class="th-color">Address</th>
-            <td class="td-cust"><?php echo $_SESSION['customer']['address']?></td>
+            <!-- <td class="td-cust"><?php echo $_SESSION['customer']['address']?></td> -->
+            <td class="td-cust"><?php echo $alamat_pembeli?></td>
         </tr>
         <tr>
             <th scope="col" class="th-color">Phone Number</th>
-            <td class="td-cust"><?php echo $_SESSION['customer']['phone']?></td>
+            <!-- <td class="td-cust"><?php echo $_SESSION['customer']['phone']?></td> -->
+            <td class="td-cust"><?php echo $no_hp_pembeli?></td>
+
         </tr>
         <tr>
             <th scope="col" class="th-color">Postal Code</th>
-            <td class="td-cust"><?php echo $_SESSION['customer']['postal']?></td>
+            <!-- <td class="td-cust"><?php echo $_SESSION['customer']['postal']?></td> -->
+            <td class="td-cust"><?php echo $kodepos_pembeli?></td>
         </tr>
     </table>
     <table class="table table-dark mb-3" id="t03">

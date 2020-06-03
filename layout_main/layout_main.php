@@ -72,6 +72,21 @@
                 <td class="navigation">
                     <a href="layout_main.php?content=<?php echo '../pages_main/home.php'?>" class="active" role="button">Home</a>
                     <a href="layout_main.php?content=<?php echo '../pages_main/cart.php'?>">Cart</a>
+
+                    <?php
+                        session_start();
+                        if(isset($_SESSION['status_pembeli'])){
+                            if($_SESSION['status_pembeli'] == "login"){
+                            ?>
+                                <a href="../action_main/logout_cust.php">Logout</a>
+                            <?php   
+                            }
+                        }else{
+                            ?>
+                                <a href="layout_main.php?content=<?php echo '../pages_main/login_cust.php'?>">Login</a>
+                            <?php
+                        }
+                    ?>
                 </td>
             </tr>
             <tr
